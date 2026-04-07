@@ -1,0 +1,180 @@
+# Ships for gas harvesting operations
+# Sources: EVE University Wiki, EVE Ref, Catalyst expansion notes (Nov 2025)
+#
+# module_type: "scoop" = Gas Cloud Scoops (turret hardpoints), "harvester" = Gas Cloud Harvesters (high slots on barges)
+# turret_slots: turret hardpoints available for scoops
+# high_slots: high slots available for harvesters (barges/exhumers only)
+
+ships:
+  # === HARVESTING FRIGATES (use scoops) ===
+  - id: venture
+    name: Venture
+    role: harvester
+    module_type: scoop
+    turret_slots: 2
+    ore_hold_m3: 5000
+    cargo_m3: 50
+    role_yield_bonus: 100
+    cycle_time_bonus_per_level: 5
+    cycle_time_bonus_skill: mining_frigate
+    notes: "Mining frigate. Role: +100% gas yield, -5%/lvl cycle time (Mining Frigate). 5K ore hold."
+
+  - id: prospect
+    name: Prospect
+    role: harvester
+    module_type: scoop
+    turret_slots: 2
+    ore_hold_m3: 10000
+    cargo_m3: 150
+    role_yield_bonus: 100
+    cycle_time_bonus_per_level: 5
+    cycle_time_bonus_skill: mining_frigate
+    can_covert_cloak: true
+    notes: "Expedition frigate. Same gas bonuses as Venture. Covert ops cloak. 10K ore hold."
+
+  # === MINING DESTROYERS (use scoops) ===
+  - id: pioneer
+    name: Pioneer
+    role: harvester
+    module_type: scoop
+    turret_slots: 3
+    ore_hold_m3: 8000
+    cargo_m3: 250
+    role_cycle_time_bonus: 25
+    cycle_time_bonus_per_level: 5
+    cycle_time_bonus_skill: mining_destroyer
+    notes: "ORE T1 mining destroyer. 3 turrets, role: -25% + -5%/lvl gas scoop duration."
+
+  - id: pioneer_ci
+    name: Pioneer Consortium Issue
+    role: harvester
+    module_type: scoop
+    turret_slots: 3
+    ore_hold_m3: 10000
+    cargo_m3: 250
+    role_cycle_time_bonus: 25
+    cycle_time_bonus_per_level: 5
+    cycle_time_bonus_skill: mining_destroyer
+    notes: "Faction ORE mining destroyer. Same gas bonuses as Pioneer. Extra mid, larger holds."
+
+  # === COMMAND DESTROYER (uses scoops, can boost) ===
+  - id: outrider
+    name: Outrider
+    role: hybrid
+    module_type: scoop
+    turret_slots: 3
+    ore_hold_m3: 20000
+    cargo_m3: 300
+    cycle_time_bonus_per_level: 5
+    cycle_time_bonus_skill: mining_destroyer
+    can_boost: true
+    burst_slots: 1
+    burst_strength_per_level: 2
+    burst_strength_skill: command_destroyers
+    notes: "ORE T2 command destroyer. 3 turrets (can use 1 for burst instead of scoop). Boosts fleet."
+
+  # === EXPEDITION COMMAND SHIP (uses scoops) ===
+  - id: odysseus
+    name: Odysseus
+    role: harvester
+    module_type: scoop
+    turret_slots: 5
+    ore_hold_m3: 0
+    cargo_m3: 750
+    cycle_time_bonus_per_level: 5
+    cycle_time_bonus_skill: expedition_command_ships
+    can_covert_cloak: true
+    notes: "SoE expedition command ship. 5 turret slots, -5%/lvl scoop duration. Covert cloak."
+
+  # === MINING BARGES (use harvesters, 0 turret hardpoints, 2 high slots) ===
+  - id: procurer
+    name: Procurer
+    role: harvester
+    module_type: harvester
+    high_slots: 2
+    ore_hold_m3: 12000
+    cargo_m3: 350
+    notes: "Mining barge. Tanky. 2 high slots for Gas Cloud Harvesters. No gas-specific bonuses."
+
+  - id: retriever
+    name: Retriever
+    role: harvester
+    module_type: harvester
+    high_slots: 2
+    ore_hold_m3: 27500
+    cargo_m3: 450
+    notes: "Mining barge. Largest ore hold of the barges. 2 high slots for harvesters."
+
+  - id: covetor
+    name: Covetor
+    role: harvester
+    module_type: harvester
+    high_slots: 2
+    ore_hold_m3: 7000
+    cargo_m3: 350
+    notes: "Mining barge. Highest yield of barges. 2 high slots for harvesters."
+
+  # === EXHUMERS (use harvesters, 0 turret hardpoints, 2 high slots) ===
+  - id: skiff
+    name: Skiff
+    role: harvester
+    module_type: harvester
+    high_slots: 2
+    ore_hold_m3: 15000
+    cargo_m3: 400
+    notes: "Exhumer. Tanky T2 barge. 2 high slots for Gas Cloud Harvesters."
+
+  - id: mackinaw
+    name: Mackinaw
+    role: harvester
+    module_type: harvester
+    high_slots: 2
+    ore_hold_m3: 35000
+    cargo_m3: 500
+    notes: "Exhumer. Large ore hold. 2 high slots for harvesters."
+
+  - id: hulk
+    name: Hulk
+    role: harvester
+    module_type: harvester
+    high_slots: 2
+    ore_hold_m3: 8500
+    cargo_m3: 400
+    notes: "Exhumer. Highest yield. 2 high slots for harvesters."
+
+  # === INDUSTRIAL COMMAND SHIPS (boosters only) ===
+  - id: porpoise
+    name: Porpoise
+    role: booster
+    module_type: scoop
+    ore_hold_m3: 50000
+    cargo_m3: 5000
+    can_boost: true
+    burst_slots: 2
+    burst_strength_per_level: 2
+    burst_strength_skill: industrial_command_ships
+    notes: "Industrial command ship. 2 burst slots. Fleet booster."
+
+  - id: orca
+    name: Orca
+    role: booster
+    module_type: scoop
+    ore_hold_m3: 150000
+    cargo_m3: 30000
+    can_boost: true
+    burst_slots: 3
+    burst_strength_per_level: 3
+    burst_strength_skill: industrial_command_ships
+    notes: "Industrial command ship. 3 burst slots. Industrial Core available."
+
+  - id: rorqual
+    name: Rorqual
+    role: booster
+    module_type: scoop
+    ore_hold_m3: 300000
+    cargo_m3: 40000
+    can_boost: true
+    burst_slots: 3
+    burst_strength_per_level: 5
+    burst_strength_skill: capital_industrial_ships
+    notes: "Capital industrial. T2 Industrial Core. Cannot enter wormholes."

@@ -1,0 +1,85 @@
+# Gas cloud harvesting modules
+# Sources: EVE Ref, EVE University Wiki (post-Catalyst expansion Nov 2025)
+#
+# TWO module categories:
+#   scoops: fit on any ship with turret hardpoints (frigates, destroyers, Odysseus)
+#   harvesters: fit ONLY on mining barges and exhumers (high slots, no turret needed)
+#
+# Gas Cloud Harvesting skill: each level allows fitting 1 more scoop
+# Mining Laser Optimization burst: -15% base cycle time to both scoops and harvesters
+
+# === GAS CLOUD SCOOPS (turret hardpoint, any ship) ===
+scoops:
+  - id: gas_scoop_i
+    name: Gas Cloud Scoop I
+    yield_per_cycle: 10.0
+    cycle_time: 30.0
+    meta_level: 0
+    residue_probability: 0
+
+  - id: crop_gas_scoop
+    name: "'Crop' Gas Cloud Scoop"
+    yield_per_cycle: 20.0
+    cycle_time: 40.0
+    meta_level: 1
+    residue_probability: 100
+    residue_multiplier: 2
+
+  - id: plow_gas_scoop
+    name: "'Plow' Gas Cloud Scoop"
+    yield_per_cycle: 20.0
+    cycle_time: 40.0
+    meta_level: 1
+    residue_probability: 100
+    residue_multiplier: 4
+
+  - id: gas_scoop_ii
+    name: Gas Cloud Scoop II
+    yield_per_cycle: 20.0
+    cycle_time: 40.0
+    meta_level: 5
+    residue_probability: 34
+    residue_multiplier: 1
+
+  - id: syndicate_gas_scoop
+    name: Syndicate Gas Cloud Scoop
+    yield_per_cycle: 20.0
+    cycle_time: 30.0
+    meta_level: 6
+    residue_probability: 0
+
+# === GAS CLOUD HARVESTERS (high slot, barges/exhumers only) ===
+harvesters:
+  - id: gas_harvester_i
+    name: Gas Cloud Harvester I
+    yield_per_cycle: 50.0
+    cycle_time: 100.0
+    meta_level: 0
+    residue_probability: 0
+
+  - id: gas_harvester_ii
+    name: Gas Cloud Harvester II
+    yield_per_cycle: 100.0
+    cycle_time: 80.0
+    meta_level: 5
+    residue_probability: 34
+    residue_multiplier: 1
+
+  - id: ore_gas_harvester
+    name: ORE Gas Cloud Harvester
+    yield_per_cycle: 100.0
+    cycle_time: 80.0
+    meta_level: 6
+    residue_probability: 0
+
+# === BURST CHARGES ===
+burst_charges:
+  - id: mining_laser_optimization
+    name: Mining Laser Optimization Charge
+    effect: cycle_time
+    base_bonus: 15.0
+
+  - id: mining_laser_field_enhancement
+    name: Mining Laser Field Enhancement Charge
+    effect: range
+    base_bonus: 40.0

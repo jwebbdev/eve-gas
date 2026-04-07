@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eve-gas"
+version = "0.1.0"
+description = "EVE Online gas harvesting profitability calculator — library and data"
+requires-python = ">=3.11"
+dependencies = [
+    "pyyaml>=6.0",
+    "requests>=2.28",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["eve_gas*"]
+
+[tool.setuptools.package-data]
+eve_gas = ["data/*.yaml"]

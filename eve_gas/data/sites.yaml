@@ -1,0 +1,93 @@
+# Wormhole Gas Sites
+# Source: EVE University Wiki (individual site pages, verified April 2026)
+# NPC spawn: ~15-20 minutes after warp-in (random variance, same for all sites)
+#
+# Class distribution (from EVE Uni Wormhole_sites page):
+#   Perimeter Reservoirs: C1-C4
+#   Frontier Reservoirs: C3-C6
+#   Core Reservoirs: C5, C6, Shattered only
+
+sites:
+  # === PERIMETER RESERVOIRS (C1-C4) ===
+  - id: barren_perimeter_reservoir
+    name: Barren Perimeter Reservoir
+    wh_classes: "C1-C4"
+    gas_clouds:
+      - gas_id: fullerite_c50
+        units: 12000
+      - gas_id: fullerite_c60
+        units: 6000
+
+  - id: token_perimeter_reservoir
+    name: Token Perimeter Reservoir
+    wh_classes: "C1-C4"
+    gas_clouds:
+      - gas_id: fullerite_c60
+        units: 12000
+      - gas_id: fullerite_c70
+        units: 6000
+
+  - id: minor_perimeter_reservoir
+    name: Minor Perimeter Reservoir
+    wh_classes: "C1-C4"
+    gas_clouds:
+      - gas_id: fullerite_c70
+        units: 12000
+      - gas_id: fullerite_c72
+        units: 6000
+
+  - id: ordinary_perimeter_reservoir
+    name: Ordinary Perimeter Reservoir
+    wh_classes: "C1-C4"
+    gas_clouds:
+      - gas_id: fullerite_c72
+        units: 12000
+      - gas_id: fullerite_c84
+        units: 6000
+
+  - id: sizeable_perimeter_reservoir
+    name: Sizeable Perimeter Reservoir
+    wh_classes: "C1-C4"
+    gas_clouds:
+      - gas_id: fullerite_c84
+        units: 24000
+      - gas_id: fullerite_c50
+        units: 6000
+
+  # === FRONTIER RESERVOIRS (C3-C6) ===
+  - id: bountiful_frontier_reservoir
+    name: Bountiful Frontier Reservoir
+    wh_classes: "C3-C6"
+    gas_clouds:
+      - gas_id: fullerite_c28
+        units: 20000
+      - gas_id: fullerite_c32
+        units: 4000
+
+  - id: vast_frontier_reservoir
+    name: Vast Frontier Reservoir
+    wh_classes: "C3-C6"
+    gas_clouds:
+      - gas_id: fullerite_c32
+        units: 20000
+      - gas_id: fullerite_c28
+        units: 4000
+
+  # === CORE RESERVOIRS (C5/C6 + Shattered) ===
+  - id: instrumental_core_reservoir
+    name: Instrumental Core Reservoir
+    wh_classes: "C5/C6"
+    gas_clouds:
+      - gas_id: fullerite_c320
+        units: 24000
+      - gas_id: fullerite_c540
+        units: 2000
+
+  - id: vital_core_reservoir
+    name: Vital Core Reservoir
+    wh_classes: "C5/C6"
+    gas_clouds:
+      - gas_id: fullerite_c540
+        units: 24000
+      - gas_id: fullerite_c320
+        units: 2000
