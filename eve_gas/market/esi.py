@@ -8,19 +8,21 @@ from ..data.loader import load_gas_types
 
 # The Forge region (Jita)
 FORGE_REGION_ID = 10000002
+JITA_STATION_ID = 60003760
 
 # Cache
-_price_cache: dict[str, float] | None = None
+_price_cache: dict | None = None
 _cache_time: float = 0
 _cache_updated_at: str = ""
 CACHE_TTL = 1800  # 30 minutes
 
 
-def fetch_gas_prices(force_refresh: bool = False) -> tuple[dict[str, float], str]:
-    """Fetch current Jita gas prices from ESI.
+def fetch_gas_prices(force_refresh: bool = False) -> tuple[dict, str]:
+    """Fetch current Jita gas prices (both buy and sell) from ESI.
 
     Returns:
-        Tuple of (prices dict {gas_id: isk_per_unit}, updated_at ISO string).
+        Tuple of (prices dict, updated_at ISO string).
+        Prices dict: {gas_id: {"buy": float, "sell": float}}
         Falls back to stale cache on error.
     """
     global _price_cache, _cache_time, _cache_updated_at
@@ -32,6 +34,10 @@ def fetch_gas_prices(force_refresh: bool = False) -> tuple[dict[str, float], str
     prices = {}
 
     for gas in gas_types:
+        buy_price = 0.0
+        sell_price = 0.0
+
+        # Fetch sell orders (lowest = what a buyer pays)
         try:
             url = (
                 f"https://esi.evetech.net/latest/markets/{FORGE_REGION_ID}/orders/"
@@ -40,25 +46,37 @@ def fetch_gas_prices(force_refresh: bool = False) -> tuple[dict[str, float], str
             resp = requests.get(url, timeout=10)
             resp.raise_for_status()
             orders = resp.json()
-
-            # Find lowest sell price in Jita (station_id 60003760)
-            jita_orders = [o for o in orders if o.get("location_id") == 60003760]
+            jita_orders = [o for o in orders if o.get("location_id") == JITA_STATION_ID]
             if not jita_orders:
-                # Fall back to all Forge sell orders
                 jita_orders = orders
-
             if jita_orders:
-                prices[gas.id] = min(o["price"] for o in jita_orders)
-            else:
-                prices[gas.id] = 0.0
+                sell_price = min(o["price"] for o in jita_orders)
         except Exception:
-            prices[gas.id] = 0.0
+            pass
+
+        # Fetch buy orders (highest = what a seller gets instantly)
+        try:
+            url = (
+                f"https://esi.evetech.net/latest/markets/{FORGE_REGION_ID}/orders/"
+                f"?type_id={gas.type_id}&order_type=buy&datasource=tranquility"
+            )
+            resp = requests.get(url, timeout=10)
+            resp.raise_for_status()
+            orders = resp.json()
+            jita_orders = [o for o in orders if o.get("location_id") == JITA_STATION_ID]
+            if not jita_orders:
+                jita_orders = orders
+            if jita_orders:
+                buy_price = max(o["price"] for o in jita_orders)
+        except Exception:
+            pass
+
+        prices[gas.id] = {"buy": buy_price, "sell": sell_price}
 
     updated_at = datetime.now(timezone.utc).isoformat()
 
-    # Only update cache if we got at least some valid prices
-    valid_prices = {k: v for k, v in prices.items() if v > 0}
-    if valid_prices:
+    valid = any(p["buy"] > 0 or p["sell"] > 0 for p in prices.values())
+    if valid:
         _price_cache = prices
         _cache_time = time.time()
         _cache_updated_at = updated_at
