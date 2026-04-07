@@ -112,9 +112,11 @@ def calculate_fleet_boost(
 
     Mining Foreman Burst with Mining Laser Optimization charge reduces cycle time.
     Boost strength depends on:
-    - Base charge bonus (15%)
+    - Base charge bonus (15% for Mining Laser Optimization)
     - Ship burst strength bonus per skill level
-    - Mining Director skill (+10% per level to burst strength)
+    - Mining Director skill (+10% per level to burst effect strength)
+    - T2 Mining Foreman Burst module (+25% effect strength)
+    - Mining Foreman Mindlink / ORE Mining Director Mindlink (+25% effect strength)
 
     Only the strongest boost applies (boosts don't stack from multiple boosters).
 
@@ -132,29 +134,35 @@ def calculate_fleet_boost(
         if not pilot.active_bursts:
             continue
 
-        # Calculate this booster's strength
         # Base charge bonus (Mining Laser Optimization = 15% cycle time reduction)
-        base_bonus = 0.15  # 15% base from charge
+        base_bonus = 0.15
 
-        # Ship burst strength bonus
+        # Ship burst strength bonus per level
         ship_bonus = 0.0
         if ship.burst_strength_per_level > 0 and ship.burst_strength_skill:
             skill_level = _get_skill_level(pilot.skills, ship.burst_strength_skill)
             ship_bonus = ship.burst_strength_per_level / 100 * skill_level
 
-        # Mining Director skill: +10% per level to burst effect strength
+        # Mining Director skill: +10% per level
         director_bonus = 0.10 * pilot.skills.mining_director
 
-        # Total burst strength multiplier
-        strength_mult = 1 + ship_bonus + director_bonus
+        # T2 Mining Foreman Burst module: +25% effect strength
+        t2_module_mult = 1.25 if pilot.burst_module_t2 else 1.0
 
-        # Final cycle time bonus from this booster
-        cycle_bonus = base_bonus * strength_mult
+        # Mindlink implant: +25% effect strength
+        mindlink_mult = 1.25 if pilot.has_mindlink else 1.0
+
+        # All bonuses multiply together
+        cycle_bonus = base_bonus * (1 + ship_bonus + director_bonus) * t2_module_mult * mindlink_mult
 
         if cycle_bonus > best_cycle_bonus:
             best_cycle_bonus = cycle_bonus
-            desc = f"{pilot.name} ({ship.name}): -{cycle_bonus*100:.1f}% cycle time"
-            descriptions = [desc]
+            parts = [f"{pilot.name} ({ship.name}): -{cycle_bonus*100:.1f}% cycle time"]
+            if pilot.burst_module_t2:
+                parts.append("T2 burst")
+            if pilot.has_mindlink:
+                parts.append("Mindlink")
+            descriptions = [", ".join(parts)]
 
     return best_cycle_bonus, best_yield_bonus, descriptions
 

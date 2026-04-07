@@ -79,7 +79,7 @@ def porpoise():
         id="porpoise", name="Porpoise", role=ShipRole.BOOSTER,
         turret_slots=0, ore_hold_m3=50000,
         can_boost=True, burst_slots=2,
-        burst_strength_per_level=3, burst_strength_skill="industrial_command_ships",
+        burst_strength_per_level=2, burst_strength_skill="industrial_command_ships",
     )
 
 
@@ -211,8 +211,8 @@ class TestFleetBoost:
         )
         ships = {"porpoise": porpoise}
         cycle, yld, descs = calculate_fleet_boost([pilot], ships)
-        # Base 15% * (1 + 0.15 ship + 0.50 director) = 15% * 1.65 = 24.75%
-        assert cycle == pytest.approx(0.2475)
+        # Base 15% * (1 + 0.10 ship + 0.50 director) = 15% * 1.60 = 24.0%
+        assert cycle == pytest.approx(0.24)
         assert len(descs) == 1
 
     def test_outrider_boost(self, outrider):
@@ -235,10 +235,47 @@ class TestFleetBoost:
                          active_bursts=["burst"])
         ships = {"porpoise": porpoise, "outrider": outrider}
         cycle, _, _ = calculate_fleet_boost([p1, p2], ships)
-        # Porpoise: 15% * (1 + 0.15 + 0.50) = 24.75%
+        # Porpoise: 15% * (1 + 0.10 + 0.50) = 24.0%
         # Outrider: 15% * (1 + 0.10 + 0.30) = 21.0%
         # Best wins
-        assert cycle == pytest.approx(0.2475)
+        assert cycle == pytest.approx(0.24)
+
+    def test_t2_burst_module(self, porpoise):
+        pilot = PilotConfig(
+            name="Booster", ship_id="porpoise",
+            skills=PilotSkills(industrial_command_ships=5, mining_director=5),
+            active_bursts=["burst"],
+            burst_module_t2=True,
+        )
+        ships = {"porpoise": porpoise}
+        cycle, _, _ = calculate_fleet_boost([pilot], ships)
+        # 15% * (1 + 0.10 + 0.50) * 1.25 (T2) = 15% * 1.60 * 1.25 = 30.0%
+        assert cycle == pytest.approx(0.30)
+
+    def test_mindlink_implant(self, porpoise):
+        pilot = PilotConfig(
+            name="Booster", ship_id="porpoise",
+            skills=PilotSkills(industrial_command_ships=5, mining_director=5),
+            active_bursts=["burst"],
+            has_mindlink=True,
+        )
+        ships = {"porpoise": porpoise}
+        cycle, _, _ = calculate_fleet_boost([pilot], ships)
+        # 15% * (1 + 0.10 + 0.50) * 1.25 (mindlink) = 30.0%
+        assert cycle == pytest.approx(0.30)
+
+    def test_t2_and_mindlink_stacked(self, porpoise):
+        pilot = PilotConfig(
+            name="Booster", ship_id="porpoise",
+            skills=PilotSkills(industrial_command_ships=5, mining_director=5),
+            active_bursts=["burst"],
+            burst_module_t2=True,
+            has_mindlink=True,
+        )
+        ships = {"porpoise": porpoise}
+        cycle, _, _ = calculate_fleet_boost([pilot], ships)
+        # 15% * (1 + 0.10 + 0.50) * 1.25 * 1.25 = 15% * 1.60 * 1.5625 = 37.5%
+        assert cycle == pytest.approx(0.375)
 
 
 # --- Full Fleet Test ---
@@ -282,7 +319,7 @@ class TestFleetCalculation:
         result = calculate_fleet(fleet, ships, gas_types, {})
 
         assert len(result.pilot_results) == 3
-        assert result.boost_cycle_time_bonus == pytest.approx(0.2475)
+        assert result.boost_cycle_time_bonus == pytest.approx(0.24)
         # Boosted duo should harvest more than unboosted duo (6400 * 2)
         assert result.fleet_m3_per_hour > 6400 * 2
 

@@ -146,6 +146,8 @@ class PilotConfig:
     # Boost config (only if ship can boost)
     active_bursts: list[str] = field(default_factory=list)  # Burst module IDs
     burst_charges: list[str] = field(default_factory=list)  # Charge IDs
+    burst_module_t2: bool = False  # T2 Mining Foreman Burst (+25% effect strength)
+    has_mindlink: bool = False  # Mining Foreman Mindlink or ORE Mining Director Mindlink (+25%)
 
 
 # ---------------------------------------------------------------------------
