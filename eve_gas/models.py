@@ -93,6 +93,8 @@ class HarvesterModule:
     cycle_time: float  # seconds (base)
     meta_level: int = 0
     is_abyssal: bool = False  # True for player-customized abyssal modules
+    residue_probability: float = 0  # % chance per cycle (0-100)
+    residue_multiplier: float = 0  # multiplier on yield amount wasted from cloud
 
 
 @dataclass

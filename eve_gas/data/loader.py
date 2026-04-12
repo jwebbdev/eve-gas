@@ -81,6 +81,8 @@ def load_scoops() -> list[HarvesterModule]:
             yield_per_cycle=m["yield_per_cycle"],
             cycle_time=m["cycle_time"],
             meta_level=m.get("meta_level", 0),
+            residue_probability=m.get("residue_probability", 0),
+            residue_multiplier=m.get("residue_multiplier", 0),
         )
         for m in data["scoops"]
     ]
@@ -99,6 +101,8 @@ def load_harvesters() -> list[HarvesterModule]:
             yield_per_cycle=m["yield_per_cycle"],
             cycle_time=m["cycle_time"],
             meta_level=m.get("meta_level", 0),
+            residue_probability=m.get("residue_probability", 0),
+            residue_multiplier=m.get("residue_multiplier", 0),
         )
         for m in data["harvesters"]
     ]
