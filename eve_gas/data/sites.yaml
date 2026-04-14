@@ -50,7 +50,7 @@ sites:
     wh_classes: "C1-C4"
     gas_clouds:
       - gas_id: fullerite_c84
-        units: 24000
+        units: 12000
       - gas_id: fullerite_c50
         units: 6000
 
