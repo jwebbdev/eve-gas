@@ -1,37 +1,37 @@
 gas_types:
 - id: fullerite_c28
   name: Fullerite-C28
-  type_id: 30370
+  type_id: 30375
   category: fullerite
   volume: 2.0
 - id: fullerite_c32
   name: Fullerite-C32
-  type_id: 30371
+  type_id: 30376
   category: fullerite
   volume: 5.0
 - id: fullerite_c50
   name: Fullerite-C50
-  type_id: 30372
+  type_id: 30370
   category: fullerite
   volume: 1.0
 - id: fullerite_c60
   name: Fullerite-C60
-  type_id: 30373
+  type_id: 30371
   category: fullerite
   volume: 1.0
 - id: fullerite_c70
   name: Fullerite-C70
-  type_id: 30374
+  type_id: 30372
   category: fullerite
   volume: 1.0
 - id: fullerite_c72
   name: Fullerite-C72
-  type_id: 30375
+  type_id: 30373
   category: fullerite
   volume: 2.0
 - id: fullerite_c84
   name: Fullerite-C84
-  type_id: 30376
+  type_id: 30374
   category: fullerite
   volume: 2.0
 - id: fullerite_c320
