@@ -1,156 +1,126 @@
-# EVE Online harvestable gas types
-# Volume is m3 per unit. Type IDs are for ESI market lookups.
-
 gas_types:
-  # --- Fullerites (wormhole gas) ---
-  - id: fullerite_c28
-    name: Fullerite-C28
-    type_id: 30370
-    category: fullerite
-    volume: 1.0
-
-  - id: fullerite_c32
-    name: Fullerite-C32
-    type_id: 30371
-    category: fullerite
-    volume: 2.0
-
-  - id: fullerite_c50
-    name: Fullerite-C50
-    type_id: 30372
-    category: fullerite
-    volume: 1.0
-
-  - id: fullerite_c60
-    name: Fullerite-C60
-    type_id: 30373
-    category: fullerite
-    volume: 2.0
-
-  - id: fullerite_c70
-    name: Fullerite-C70
-    type_id: 30374
-    category: fullerite
-    volume: 1.0
-
-  - id: fullerite_c72
-    name: Fullerite-C72
-    type_id: 30375
-    category: fullerite
-    volume: 2.0
-
-  - id: fullerite_c84
-    name: Fullerite-C84
-    type_id: 30376
-    category: fullerite
-    volume: 2.0
-
-  - id: fullerite_c320
-    name: Fullerite-C320
-    type_id: 30377
-    category: fullerite
-    volume: 5.0
-
-  - id: fullerite_c540
-    name: Fullerite-C540
-    type_id: 30378
-    category: fullerite
-    volume: 10.0
-
-  # --- Cytoserocin (lowsec/nullsec, used in strong boosters) ---
-  - id: amber_cytoserocin
-    name: Amber Cytoserocin
-    type_id: 25268
-    category: cytoserocin
-    volume: 10.0
-
-  - id: azure_cytoserocin
-    name: Azure Cytoserocin
-    type_id: 25279
-    category: cytoserocin
-    volume: 10.0
-
-  - id: celadon_cytoserocin
-    name: Celadon Cytoserocin
-    type_id: 25275
-    category: cytoserocin
-    volume: 10.0
-
-  - id: golden_cytoserocin
-    name: Golden Cytoserocin
-    type_id: 25273
-    category: cytoserocin
-    volume: 10.0
-
-  - id: lime_cytoserocin
-    name: Lime Cytoserocin
-    type_id: 25277
-    category: cytoserocin
-    volume: 10.0
-
-  - id: malachite_cytoserocin
-    name: Malachite Cytoserocin
-    type_id: 25276
-    category: cytoserocin
-    volume: 10.0
-
-  - id: vermillion_cytoserocin
-    name: Vermillion Cytoserocin
-    type_id: 25278
-    category: cytoserocin
-    volume: 10.0
-
-  - id: viridian_cytoserocin
-    name: Viridian Cytoserocin
-    type_id: 25274
-    category: cytoserocin
-    volume: 10.0
-
-  # --- Mykoserocin (highsec/lowsec, used in standard boosters) ---
-  - id: amber_mykoserocin
-    name: Amber Mykoserocin
-    type_id: 28694
-    category: mykoserocin
-    volume: 10.0
-
-  - id: azure_mykoserocin
-    name: Azure Mykoserocin
-    type_id: 28695
-    category: mykoserocin
-    volume: 10.0
-
-  - id: celadon_mykoserocin
-    name: Celadon Mykoserocin
-    type_id: 28696
-    category: mykoserocin
-    volume: 10.0
-
-  - id: golden_mykoserocin
-    name: Golden Mykoserocin
-    type_id: 28697
-    category: mykoserocin
-    volume: 10.0
-
-  - id: lime_mykoserocin
-    name: Lime Mykoserocin
-    type_id: 28698
-    category: mykoserocin
-    volume: 10.0
-
-  - id: malachite_mykoserocin
-    name: Malachite Mykoserocin
-    type_id: 28699
-    category: mykoserocin
-    volume: 10.0
-
-  - id: vermillion_mykoserocin
-    name: Vermillion Mykoserocin
-    type_id: 28700
-    category: mykoserocin
-    volume: 10.0
-
-  - id: viridian_mykoserocin
-    name: Viridian Mykoserocin
-    type_id: 28701
-    category: mykoserocin
-    volume: 10.0
+- id: fullerite_c28
+  name: Fullerite-C28
+  type_id: 30370
+  category: fullerite
+  volume: 2.0
+- id: fullerite_c32
+  name: Fullerite-C32
+  type_id: 30371
+  category: fullerite
+  volume: 5.0
+- id: fullerite_c50
+  name: Fullerite-C50
+  type_id: 30372
+  category: fullerite
+  volume: 1.0
+- id: fullerite_c60
+  name: Fullerite-C60
+  type_id: 30373
+  category: fullerite
+  volume: 1.0
+- id: fullerite_c70
+  name: Fullerite-C70
+  type_id: 30374
+  category: fullerite
+  volume: 1.0
+- id: fullerite_c72
+  name: Fullerite-C72
+  type_id: 30375
+  category: fullerite
+  volume: 2.0
+- id: fullerite_c84
+  name: Fullerite-C84
+  type_id: 30376
+  category: fullerite
+  volume: 2.0
+- id: fullerite_c320
+  name: Fullerite-C320
+  type_id: 30377
+  category: fullerite
+  volume: 5.0
+- id: fullerite_c540
+  name: Fullerite-C540
+  type_id: 30378
+  category: fullerite
+  volume: 10.0
+- id: amber_cytoserocin
+  name: Amber Cytoserocin
+  type_id: 25268
+  category: cytoserocin
+  volume: 10.0
+- id: azure_cytoserocin
+  name: Azure Cytoserocin
+  type_id: 25279
+  category: cytoserocin
+  volume: 10.0
+- id: celadon_cytoserocin
+  name: Celadon Cytoserocin
+  type_id: 25275
+  category: cytoserocin
+  volume: 10.0
+- id: golden_cytoserocin
+  name: Golden Cytoserocin
+  type_id: 25273
+  category: cytoserocin
+  volume: 10.0
+- id: lime_cytoserocin
+  name: Lime Cytoserocin
+  type_id: 25277
+  category: cytoserocin
+  volume: 10.0
+- id: malachite_cytoserocin
+  name: Malachite Cytoserocin
+  type_id: 25276
+  category: cytoserocin
+  volume: 10.0
+- id: vermillion_cytoserocin
+  name: Vermillion Cytoserocin
+  type_id: 25278
+  category: cytoserocin
+  volume: 10.0
+- id: viridian_cytoserocin
+  name: Viridian Cytoserocin
+  type_id: 25274
+  category: cytoserocin
+  volume: 10.0
+- id: amber_mykoserocin
+  name: Amber Mykoserocin
+  type_id: 28694
+  category: mykoserocin
+  volume: 10.0
+- id: azure_mykoserocin
+  name: Azure Mykoserocin
+  type_id: 28695
+  category: mykoserocin
+  volume: 10.0
+- id: celadon_mykoserocin
+  name: Celadon Mykoserocin
+  type_id: 28696
+  category: mykoserocin
+  volume: 10.0
+- id: golden_mykoserocin
+  name: Golden Mykoserocin
+  type_id: 28697
+  category: mykoserocin
+  volume: 10.0
+- id: lime_mykoserocin
+  name: Lime Mykoserocin
+  type_id: 28698
+  category: mykoserocin
+  volume: 10.0
+- id: malachite_mykoserocin
+  name: Malachite Mykoserocin
+  type_id: 28699
+  category: mykoserocin
+  volume: 10.0
+- id: vermillion_mykoserocin
+  name: Vermillion Mykoserocin
+  type_id: 28700
+  category: mykoserocin
+  volume: 10.0
+- id: viridian_mykoserocin
+  name: Viridian Mykoserocin
+  type_id: 28701
+  category: mykoserocin
+  volume: 10.0
